@@ -418,7 +418,7 @@ begin
     if ls2[0]='' then SpecNo:=formatdatetime('nnss',now)
     else SpecNo:=rightstr('0000'+ls2[0],4);
     
-    IF LS2[4]='全程CRP' THEN
+    IF pos('CRP',LS2[4])>0 THEN//全程CRP，【全程】乱码
     BEGIN
       ReceiveItemInfo:=VarArrayCreate([0,1],varVariant);
       ReceiveItemInfo[0]:=VarArrayof(['CRP',ls2[1],'','']);
