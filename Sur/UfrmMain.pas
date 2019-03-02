@@ -8,7 +8,7 @@ uses
   ActnList, AppEvnts, ComCtrls, ToolWin, ExtCtrls,
   registry,inifiles,Dialogs,StrUtils, DB,ComObj,Variants,  
   IdUDPServer,IdSocketHandle,PerlRegEx,
-  IdBaseComponent, IdComponent, IdUDPBase,HTTPApp;
+  IdBaseComponent, IdComponent, IdUDPBase;
 
 type
   TfrmMain = class(TForm)
