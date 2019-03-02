@@ -8,7 +8,7 @@ uses
   ActnList, AppEvnts, ComCtrls, ToolWin, ExtCtrls,
   registry,inifiles,Dialogs,StrUtils, DB,ComObj,Variants,  
   IdUDPServer,IdSocketHandle,PerlRegEx,
-  IdBaseComponent, IdComponent, IdUDPBase;
+  IdBaseComponent, IdComponent, IdUDPBase,HTTPApp;
 
 type
   TfrmMain = class(TForm)
@@ -387,6 +387,8 @@ begin
   Str:=Data.DataString;
   Data.Free;
 
+  Str:=UTF8Decode(Str);//解决中文乱码
+
   if length(memo1.Lines.Text)>=60000 then memo1.Lines.Clear;//memo只能接受64K个字符
   memo1.Lines.Add(Str);
 
@@ -418,7 +420,7 @@ begin
     if ls2[0]='' then SpecNo:=formatdatetime('nnss',now)
     else SpecNo:=rightstr('0000'+ls2[0],4);
     
-    IF pos('CRP',LS2[4])>0 THEN//全程CRP，【全程】乱码
+    IF pos('全程CRP',LS2[4])>0 THEN
     BEGIN
       ReceiveItemInfo:=VarArrayCreate([0,1],varVariant);
       ReceiveItemInfo[0]:=VarArrayof(['CRP',ls2[1],'','']);
